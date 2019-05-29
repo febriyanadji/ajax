@@ -1,0 +1,34 @@
+<script src="jquery.js"></script>
+
+<script>
+    function GetData() {
+        $.ajax({
+            url: 'https://ajax.tik.my.id/index.php',
+            dataType: 'JSON',
+            type: 'GET',
+            data: {},
+            beforeSend: function () {
+                $("p").html('tunggu ...');
+            },
+            success: function (data) {
+                $("p").html("Berhasil mendapatkan data <br><br> Username : " + data['data']['username'] + "<br> Password : " + data['data']['password']);
+            },
+            error: function (e) {
+                $("p").html("gagal mendapatkan data ... <br><br> Status : " + e.statusText);
+                // console.log(e);
+            }
+
+        })
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        GetData();
+    });
+
+</script>
+<html>
+<p>Javascript tidak aktif !!</p>
+
+</html>
